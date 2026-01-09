@@ -109,7 +109,7 @@ export function SalesTeamManagement() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <Label htmlFor="name">Full Name *</Label>
+                <Label htmlFor="name" className="text-slate-700 mb-2 flex items-center gap-2">Full Name *</Label>
                 <Input
                   id="name"
                   value={formData.name}
@@ -119,7 +119,7 @@ export function SalesTeamManagement() {
               </div>
 
               <div>
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email" className="text-slate-700 mb-2 flex items-center gap-2">Email *</Label>
                 <Input
                   id="email"
                   type="email"
@@ -130,7 +130,7 @@ export function SalesTeamManagement() {
               </div>
 
               <div>
-                <Label htmlFor="phone">Phone *</Label>
+                <Label htmlFor="phone" className="text-slate-700 mb-2 flex items-center gap-2">Phone *</Label>
                 <Input
                   id="phone"
                   type="tel"
@@ -141,7 +141,7 @@ export function SalesTeamManagement() {
               </div>
 
               <div>
-                <Label htmlFor="salesTarget">Monthly Sales Target (₹) *</Label>
+                <Label htmlFor="salesTarget" className="text-slate-700 mb-2 flex items-center gap-2">Monthly Sales Target (₹) *</Label>
                 <Input
                   id="salesTarget"
                   type="number"
