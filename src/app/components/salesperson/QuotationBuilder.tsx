@@ -211,7 +211,7 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
                 <select
                   value={currentStatus}
                   onChange={(e) => handleStatusChange(e.target.value as Lead['status'])}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all ${getStatusColor(currentStatus)}`}
+                  className={`px-3 py-1.5 text-sm font-medium rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all cursor-pointer ${getStatusColor(currentStatus)}`}
                 >
                   <option value="new">New Lead</option>
                   <option value="contacted">Contacted</option>
@@ -266,7 +266,7 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
                 <select
                   value={config.panelType}
                   onChange={(e) => setConfig({ ...config, panelType: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                 >
                   {panels.map(panel => (
                     <option key={panel.id} value={panel.id}>
@@ -319,7 +319,7 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
                 <select
                   value={config.inverterType}
                   onChange={(e) => setConfig({ ...config, inverterType: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                 >
                   {inverters.map(inverter => (
                     <option key={inverter.id} value={inverter.id}>
@@ -352,7 +352,7 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
                   value={config.batteryType}
                   onChange={(e) => setConfig({ ...config, batteryType: e.target.value })}
                   disabled={!config.batteryBackup}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 disabled:bg-slate-100 disabled:cursor-not-allowed disabled:text-slate-500"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed disabled:text-slate-500"
                 >
                   {batteries.map(battery => (
                     <option key={battery.id} value={battery.id}>

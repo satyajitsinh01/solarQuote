@@ -97,7 +97,7 @@ export function LeadAssignment() {
                     <TableCell>
                       <select
                         onChange={(e) => handleAssignLead(lead.id, e.target.value)}
-                        className="px-2 md:px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 w-full"
+                        className="px-2 md:px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer w-full"
                         defaultValue=""
                       >
                         <option value="" disabled>Select...</option>
@@ -170,7 +170,7 @@ export function LeadAssignment() {
                     <select
                       value={lead.assignedTo}
                       onChange={(e) => handleReassignLead(lead.id, e.target.value)}
-                      className="px-2 md:px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 w-full"
+                      className="px-2 md:px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer w-full"
                     >
                       {activeSalespeople.map(sp => (
                         <option key={sp.id} value={sp.id}>

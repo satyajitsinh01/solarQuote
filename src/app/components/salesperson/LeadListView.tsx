@@ -89,7 +89,7 @@ export function LeadListView({ leads, onOpenQuotation }: LeadListViewProps) {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-4 py-2 border border-slate-200 rounded-sm bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="px-4 py-2 border border-slate-200 rounded-sm bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
         >
           <option value="all">All Status</option>
           <option value="new">New</option>

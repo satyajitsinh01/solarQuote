@@ -95,7 +95,7 @@ export function CompanyLeadOversight() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
           >
             <option value="all">All Status</option>
             <option value="new">New</option>
@@ -109,7 +109,7 @@ export function CompanyLeadOversight() {
           <select
             value={salespersonFilter}
             onChange={(e) => setSalespersonFilter(e.target.value)}
-            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
           >
             <option value="all">All Salespeople</option>
             {salespeople.map(sp => (
@@ -120,7 +120,7 @@ export function CompanyLeadOversight() {
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
           >
             <option value="all">All Time</option>
             <option value="today">Today</option>
