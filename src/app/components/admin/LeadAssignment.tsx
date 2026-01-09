@@ -5,6 +5,13 @@ import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import {
   Table,
   TableBody,
   TableCell,
@@ -95,18 +102,18 @@ export function LeadAssignment() {
                       {new Date(lead.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
                     </TableCell>
                     <TableCell>
-                      <select
-                        onChange={(e) => handleAssignLead(lead.id, e.target.value)}
-                        className="px-2 md:px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer w-full"
-                        defaultValue=""
-                      >
-                        <option value="" disabled>Select...</option>
-                        {activeSalespeople.map(sp => (
-                          <option key={sp.id} value={sp.id}>
-                            {sp.name} ({sp.leadsAssigned})
-                          </option>
-                        ))}
-                      </select>
+                      <Select onValueChange={(value) => handleAssignLead(lead.id, value)}>
+                        <SelectTrigger className="w-full text-xs md:text-sm h-8 md:h-9">
+                          <SelectValue placeholder="Select..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {activeSalespeople.map(sp => (
+                            <SelectItem key={sp.id} value={sp.id}>
+                              {sp.name} ({sp.leadsAssigned})
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -167,17 +174,18 @@ export function LeadAssignment() {
                     ) : '-'}
                   </TableCell>
                   <TableCell>
-                    <select
-                      value={lead.assignedTo}
-                      onChange={(e) => handleReassignLead(lead.id, e.target.value)}
-                      className="px-2 md:px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer w-full"
-                    >
-                      {activeSalespeople.map(sp => (
-                        <option key={sp.id} value={sp.id}>
-                          {sp.name}
-                        </option>
-                      ))}
-                    </select>
+                    <Select value={lead.assignedTo} onValueChange={(value) => handleReassignLead(lead.id, value)}>
+                      <SelectTrigger className="w-full text-xs md:text-sm h-8 md:h-9">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {activeSalespeople.map(sp => (
+                          <SelectItem key={sp.id} value={sp.id}>
+                            {sp.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </TableCell>
                 </TableRow>
               ))}

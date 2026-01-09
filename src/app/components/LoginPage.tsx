@@ -59,8 +59,8 @@ export function LoginPage({ onLogin }: LoginPageProps) {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-amber-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="w-full max-w-md relative z-10">
-        {/* Logo with Animation */}
+      <div className="w-full max-w-6xl relative z-10">
+        {/* Logo with Animation - Centered at top */}
         <div className="text-center mb-8 animate-fade-in">
           <div className="inline-flex items-center justify-center mb-4 transform hover:scale-105 transition-transform duration-300">
             <SolaraLogo size="lg" showText={true} />
@@ -68,146 +68,149 @@ export function LoginPage({ onLogin }: LoginPageProps) {
           <p className="text-slate-300 text-sm font-light">Solar Lead Management & Quotation System</p>
         </div>
 
-        {/* Login Card with Enhanced Styling */}
-        <Card className="p-8 shadow-2xl border-0 bg-white/95 backdrop-blur-sm animate-slide-up">
-          <div className="mb-6">
-            <h2 className="text-3xl font-bold text-slate-900 mb-2 text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Welcome Back
-            </h2>
-            <p className="text-sm text-slate-500 text-center">Sign in to access your dashboard</p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-slate-700 mb-2 flex items-center gap-2 font-medium">
-                <div className="p-1.5 rounded-lg bg-purple-100">
-                  <Mail className="w-4 h-4 text-purple-600" />
-                </div>
-                Email Address
-              </Label>
-              <div className="relative">
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="h-12 pl-4 pr-4 border-2 border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-200"
-                />
-              </div>
+        {/* Flex Container for Login and Quick Login */}
+        <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+          {/* Left Side - Login Form */}
+          <Card className="flex-1 p-8 shadow-2xl border-0 bg-white/95 backdrop-blur-sm animate-slide-up">
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold text-slate-900 mb-2 text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Welcome Back
+              </h2>
+              <p className="text-sm text-slate-500 text-center">Sign in to access your dashboard</p>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="password" className="text-slate-700 mb-2 flex items-center gap-2 font-medium">
-                <div className="p-1.5 rounded-lg bg-purple-100">
-                  <Lock className="w-4 h-4 text-purple-600" />
-                </div>
-                Password
-              </Label>
-              <div className="relative">
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="h-12 pl-4 pr-4 border-2 border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-200"
-                />
-              </div>
-            </div>
-
-            {error && (
-              <div className="flex items-center gap-2 p-4 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-sm animate-shake">
-                <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                <span>{error}</span>
-              </div>
-            )}
-
-            <Button 
-              type="submit" 
-              className="w-full h-12 text-base font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
-            >
-              Sign In
-            </Button>
-          </form>
-
-          {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200"></div>
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-4 text-slate-500 font-medium">Quick Login</span>
-            </div>
-          </div>
-
-          {/* Demo Credentials - Enhanced */}
-          <div className="space-y-3">
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full h-12 gap-2 border-2 border-slate-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 group"
-              onClick={() => handleQuickLogin('salesperson')}
-            >
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-semibold text-sm group-hover:scale-110 transition-transform">
-                    S
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-slate-700 mb-2 flex items-center gap-2 font-medium">
+                  <div className="p-1.5 rounded-lg bg-purple-100">
+                    <Mail className="w-4 h-4 text-purple-600" />
                   </div>
-                  <div className="text-left">
-                    <div className="font-semibold text-slate-900">Salesperson</div>
-                    <div className="text-xs text-slate-500">sales@solarquote.com</div>
-                  </div>
-                </div>
-                <div className="text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                  →
+                  Email Address
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="h-12 pl-4 pr-4 border-2 border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-200"
+                  />
                 </div>
               </div>
-            </Button>
 
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full h-12 gap-2 border-2 border-slate-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 group"
-              onClick={() => handleQuickLogin('admin')}
-            >
-              <div className="flex items-center justify-between w-full">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-semibold text-sm group-hover:scale-110 transition-transform">
-                    A
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-slate-700 mb-2 flex items-center gap-2 font-medium">
+                  <div className="p-1.5 rounded-lg bg-purple-100">
+                    <Lock className="w-4 h-4 text-purple-600" />
                   </div>
-                  <div className="text-left">
-                    <div className="font-semibold text-slate-900">Admin</div>
-                    <div className="text-xs text-slate-500">admin@solarquote.com</div>
+                  Password
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="h-12 pl-4 pr-4 border-2 border-slate-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-200"
+                  />
+                </div>
+              </div>
+
+              {error && (
+                <div className="flex items-center gap-2 p-4 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-sm animate-shake">
+                  <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <Button 
+                type="submit" 
+                className="w-full h-12 text-base font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+              >
+                Sign In
+              </Button>
+            </form>
+          </Card>
+
+          {/* Right Side - Quick Login */}
+          <Card className="flex-1 p-8 shadow-2xl border-0 bg-white/95 backdrop-blur-sm animate-slide-up">
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold text-slate-900 mb-2 text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Quick Login
+              </h2>
+              <p className="text-sm text-slate-500 text-center">Select a role to login instantly</p>
+            </div>
+
+            {/* Quick Login Buttons */}
+            <div className="space-y-4 mb-6">
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full h-16 gap-2 border-2 border-slate-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 group"
+                onClick={() => handleQuickLogin('salesperson')}
+              >
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-semibold text-base group-hover:scale-110 transition-transform">
+                      S
+                    </div>
+                    <div className="text-left">
+                      <div className="font-semibold text-slate-900 text-base">Salesperson</div>
+                      <div className="text-xs text-slate-500">sales@solarquote.com</div>
+                    </div>
+                  </div>
+                  <div className="text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity text-xl">
+                    →
                   </div>
                 </div>
-                <div className="text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                  →
+              </Button>
+
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full h-16 gap-2 border-2 border-slate-200 hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 group"
+                onClick={() => handleQuickLogin('admin')}
+              >
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-semibold text-base group-hover:scale-110 transition-transform">
+                      A
+                    </div>
+                    <div className="text-left">
+                      <div className="font-semibold text-slate-900 text-base">Admin</div>
+                      <div className="text-xs text-slate-500">admin@solarquote.com</div>
+                    </div>
+                  </div>
+                  <div className="text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity text-xl">
+                    →
+                  </div>
+                </div>
+              </Button>
+            </div>
+
+            {/* Credentials Display - Enhanced */}
+            <div className="p-4 bg-gradient-to-br from-slate-50 to-purple-50 rounded-xl border border-slate-200">
+              <p className="text-xs font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                Demo Credentials
+              </p>
+              <div className="space-y-2 text-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-white rounded-lg border border-slate-200">
+                  <span className="text-slate-600 font-medium">Salesperson:</span>
+                  <code className="bg-slate-100 px-2 py-1 rounded text-slate-700 font-mono text-[10px] sm:text-xs">sales@solarquote.com / sales123</code>
+                </div>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-2 bg-white rounded-lg border border-slate-200">
+                  <span className="text-slate-600 font-medium">Admin:</span>
+                  <code className="bg-slate-100 px-2 py-1 rounded text-slate-700 font-mono text-[10px] sm:text-xs">admin@solarquote.com / admin123</code>
                 </div>
               </div>
-            </Button>
-          </div>
-
-          {/* Credentials Display - Enhanced */}
-          <div className="mt-6 p-4 bg-gradient-to-br from-slate-50 to-purple-50 rounded-xl border border-slate-200">
-            <p className="text-xs font-semibold text-slate-700 mb-3 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-              Demo Credentials
-            </p>
-            <div className="space-y-2 text-xs">
-              <div className="flex items-center justify-between p-2 bg-white rounded-lg border border-slate-200">
-                <span className="text-slate-600 font-medium">Salesperson:</span>
-                <code className="bg-slate-100 px-2 py-1 rounded text-slate-700 font-mono">sales@solarquote.com / sales123</code>
-              </div>
-              <div className="flex items-center justify-between p-2 bg-white rounded-lg border border-slate-200">
-                <span className="text-slate-600 font-medium">Admin:</span>
-                <code className="bg-slate-100 px-2 py-1 rounded text-slate-700 font-mono">admin@solarquote.com / admin123</code>
-              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
 
       <style>{`

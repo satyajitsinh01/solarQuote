@@ -4,6 +4,13 @@ import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import {
   Search,
   FileText,
   Phone,
@@ -86,19 +93,20 @@ export function LeadListView({ leads, onOpenQuotation }: LeadListViewProps) {
           />
         </div>
 
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-4 py-2 border border-slate-200 rounded-sm bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-        >
-          <option value="all">All Status</option>
-          <option value="new">New</option>
-          <option value="contacted">Contacted</option>
-          <option value="quoted">Quoted</option>
-          <option value="negotiating">Negotiating</option>
-          <option value="closed-won">Won</option>
-          <option value="closed-lost">Lost</option>
-        </select>
+        <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <SelectTrigger className="w-full md:w-[180px]">
+            <SelectValue placeholder="All Status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Status</SelectItem>
+            <SelectItem value="new">New</SelectItem>
+            <SelectItem value="contacted">Contacted</SelectItem>
+            <SelectItem value="quoted">Quoted</SelectItem>
+            <SelectItem value="negotiating">Negotiating</SelectItem>
+            <SelectItem value="closed-won">Won</SelectItem>
+            <SelectItem value="closed-lost">Lost</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {/* Lead Cards - Dashboard Style */}

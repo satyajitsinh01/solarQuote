@@ -6,6 +6,13 @@ import { Input } from '../ui/input';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import {
   Table,
   TableBody,
   TableCell,
@@ -92,41 +99,44 @@ export function CompanyLeadOversight() {
             />
           </div>
 
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-          >
-            <option value="all">All Status</option>
-            <option value="new">New</option>
-            <option value="contacted">Contacted</option>
-            <option value="quoted">Quoted</option>
-            <option value="negotiating">Negotiating</option>
-            <option value="closed-won">Won</option>
-            <option value="closed-lost">Lost</option>
-          </select>
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="All Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Status</SelectItem>
+              <SelectItem value="new">New</SelectItem>
+              <SelectItem value="contacted">Contacted</SelectItem>
+              <SelectItem value="quoted">Quoted</SelectItem>
+              <SelectItem value="negotiating">Negotiating</SelectItem>
+              <SelectItem value="closed-won">Won</SelectItem>
+              <SelectItem value="closed-lost">Lost</SelectItem>
+            </SelectContent>
+          </Select>
 
-          <select
-            value={salespersonFilter}
-            onChange={(e) => setSalespersonFilter(e.target.value)}
-            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-          >
-            <option value="all">All Salespeople</option>
-            {salespeople.map(sp => (
-              <option key={sp.id} value={sp.id}>{sp.name}</option>
-            ))}
-          </select>
+          <Select value={salespersonFilter} onValueChange={setSalespersonFilter}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="All Salespeople" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Salespeople</SelectItem>
+              {salespeople.map(sp => (
+                <SelectItem key={sp.id} value={sp.id}>{sp.name}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-          <select
-            value={dateRange}
-            onChange={(e) => setDateRange(e.target.value)}
-            className="px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-          >
-            <option value="all">All Time</option>
-            <option value="today">Today</option>
-            <option value="week">Last 7 Days</option>
-            <option value="month">Last 30 Days</option>
-          </select>
+          <Select value={dateRange} onValueChange={setDateRange}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="All Time" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Time</SelectItem>
+              <SelectItem value="today">Today</SelectItem>
+              <SelectItem value="week">Last 7 Days</SelectItem>
+              <SelectItem value="month">Last 30 Days</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 

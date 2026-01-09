@@ -7,6 +7,13 @@ import { Label } from '../ui/label';
 import { Switch } from '../ui/switch';
 import { Slider } from '../ui/slider';
 import { Badge } from '../ui/badge';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
 import { 
   ArrowLeft, 
   Zap, 
@@ -208,18 +215,19 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
               {/* Status Selector */}
               <div className="flex items-center gap-2">
                 <Label className="text-sm text-slate-700 font-medium">Status:</Label>
-                <select
-                  value={currentStatus}
-                  onChange={(e) => handleStatusChange(e.target.value as Lead['status'])}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all cursor-pointer ${getStatusColor(currentStatus)}`}
-                >
-                  <option value="new">New Lead</option>
-                  <option value="contacted">Contacted</option>
-                  <option value="quoted">Quoted</option>
-                  <option value="negotiating">Negotiating</option>
-                  <option value="closed-won">Won</option>
-                  <option value="closed-lost">Lost</option>
-                </select>
+                <Select value={currentStatus} onValueChange={(value) => handleStatusChange(value as Lead['status'])}>
+                  <SelectTrigger className={`w-[180px] ${getStatusColor(currentStatus)}`}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="new">New Lead</SelectItem>
+                    <SelectItem value="contacted">Contacted</SelectItem>
+                    <SelectItem value="quoted">Quoted</SelectItem>
+                    <SelectItem value="negotiating">Negotiating</SelectItem>
+                    <SelectItem value="closed-won">Won</SelectItem>
+                    <SelectItem value="closed-lost">Lost</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
@@ -263,17 +271,18 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
             <div className="space-y-4">
               <div>
                 <Label className="text-slate-700 mb-2">Select Panel Brand & Model</Label>
-                <select
-                  value={config.panelType}
-                  onChange={(e) => setConfig({ ...config, panelType: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                >
-                  {panels.map(panel => (
-                    <option key={panel.id} value={panel.id}>
-                      {panel.brand} {panel.model} - {panel.capacity}W - ₹{panel.price.toLocaleString()}
-                    </option>
-                  ))}
-                </select>
+                <Select value={config.panelType} onValueChange={(value) => setConfig({ ...config, panelType: value })}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select panel" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {panels.map(panel => (
+                      <SelectItem key={panel.id} value={panel.id}>
+                        {panel.brand} {panel.model} - {panel.capacity}W - ₹{panel.price.toLocaleString()}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div>
@@ -316,17 +325,18 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
 
               <div>
                 <Label className="text-slate-700 mb-2">Select Inverter</Label>
-                <select
-                  value={config.inverterType}
-                  onChange={(e) => setConfig({ ...config, inverterType: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                >
-                  {inverters.map(inverter => (
-                    <option key={inverter.id} value={inverter.id}>
-                      {inverter.brand} {inverter.model} - {inverter.capacity}kW - ₹{inverter.price.toLocaleString()}
-                    </option>
-                  ))}
-                </select>
+                <Select value={config.inverterType} onValueChange={(value) => setConfig({ ...config, inverterType: value })}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select inverter" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {inverters.map(inverter => (
+                      <SelectItem key={inverter.id} value={inverter.id}>
+                        {inverter.brand} {inverter.model} - {inverter.capacity}kW - ₹{inverter.price.toLocaleString()}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <p className="text-xs text-slate-500 mt-1">
                   Recommended: {systemSizeKW.toFixed(1)}kW inverter for {systemSizeKW.toFixed(2)}kW system
                 </p>
@@ -348,18 +358,22 @@ export function QuotationBuilder({ lead, onUpdateLead, onBack }: QuotationBuilde
 
               <div className={config.batteryBackup ? '' : 'opacity-50'}>
                 <Label className="text-slate-700 mb-2">Select Battery</Label>
-                <select
-                  value={config.batteryType}
-                  onChange={(e) => setConfig({ ...config, batteryType: e.target.value })}
+                <Select 
+                  value={config.batteryType} 
+                  onValueChange={(value) => setConfig({ ...config, batteryType: value })}
                   disabled={!config.batteryBackup}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer disabled:bg-slate-100 disabled:cursor-not-allowed disabled:text-slate-500"
                 >
-                  {batteries.map(battery => (
-                    <option key={battery.id} value={battery.id}>
-                      {battery.brand} {battery.model} - {battery.capacity}kWh - ₹{battery.price.toLocaleString()}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger className="w-full" disabled={!config.batteryBackup}>
+                    <SelectValue placeholder="Select battery" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {batteries.map(battery => (
+                      <SelectItem key={battery.id} value={battery.id}>
+                        {battery.brand} {battery.model} - {battery.capacity}kWh - ₹{battery.price.toLocaleString()}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <p className={`text-xs mt-2 ${config.batteryBackup ? 'text-green-600' : 'text-slate-400'}`}>
                   ✓ Store excess energy for use during night or power cuts
                 </p>
