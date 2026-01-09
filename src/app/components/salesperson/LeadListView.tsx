@@ -67,7 +67,7 @@ export function LeadListView({ leads, onOpenQuotation }: LeadListViewProps) {
 
   const getStatusBadgeClasses = (status: string) => {
     const base =
-      'inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium border';
+      'inline-flex items-center rounded-sm px-2.5 py-0.5 text-[11px] font-medium border';
     const variants: Record<string, string> = {
       new: 'bg-emerald-50 text-emerald-700 border-emerald-100',
       contacted: 'bg-sky-50 text-sky-700 border-sky-100',
