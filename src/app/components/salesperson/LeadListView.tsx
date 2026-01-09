@@ -119,9 +119,9 @@ export function LeadListView({ leads, onOpenQuotation }: LeadListViewProps) {
           >
             <div className="flex flex-col flex-1">
               {/* Header with Avatar, Name & Status */}
-              <div className="flex items-center justify-between mb-3 gap-3">
+              <div className="flex items-center justify-between mb-4 gap-3">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-full bg-[#0F2647] flex items-center justify-center text-white font-semibold text-base flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[#0F2647] flex items-center justify-center text-white font-semibold text-base flex-shrink-0">
                     {lead.customerName.charAt(0)}
                   </div>
                   <div className="min-w-0 space-y-1">
@@ -138,21 +138,21 @@ export function LeadListView({ leads, onOpenQuotation }: LeadListViewProps) {
               </div>
 
               {/* Contact + Address block with fixed height for consistent cards */}
-              <div className="space-y-2 mb-4 min-h-[72px] md:min-h-[80px] flex flex-col justify-start">
-                <div className="flex flex-wrap items-center gap-x-5 py-3 text-xs md:text-sm text-slate-600">
+              <div className="space-y-2  min-h-[72px] md:min-h-[80px] flex flex-col justify-start">
+                <div className="flex flex-wrap items-center gap-x-5 pb-3 text-xs md:text-sm text-slate-600">
                   <div className="flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5 text-[#0F2647]" />
+                    <Phone className="w-4 h-4 text-[#0F2647]" />
                     <span className="whitespace-nowrap">{lead.phone}</span>
                   </div>
                   <div className="flex items-center gap-1.5 min-w-0">
-                    <Mail className="w-3.5 h-3.5 text-[#0F2647] hidden sm:inline" />
+                    <Mail className="w-4 h-4 text-[#0F2647] hidden sm:inline" />
                     <span className="truncate max-w-[220px] hidden sm:inline">
                       {lead.email}
                     </span>
                   </div>
                 </div>
                 <div className="flex items-start gap-2 text-xs md:text-sm text-slate-600 truncate">
-                  <MapPin className="w-3.5 h-3.5 mt-0.5 text-[#0F2647] flex-shrink-0" />
+                  <MapPin className="w-4 h-4 mt-0.5 text-[#0F2647] flex-shrink-0" />
                   <span className="line-clamp-2">
                     {lead.propertyAddress}
                   </span>
@@ -160,7 +160,7 @@ export function LeadListView({ leads, onOpenQuotation }: LeadListViewProps) {
               </div>
 
               {/* Bill / System / Quote panel */}
-              <div className="bg-[#F4F7FA] rounded-sm px-4 py-3 md:px-6 md:py-4">
+              <div className="bg-[#F4F7FA] border border-[#EFEFEF] rounded-sm px-4 py-3 md:px-6 md:py-4">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between md:justify-start gap-3 md:gap-12 text-sm">
                   <div className="flex items-baseline gap-1">
                     <span className="text-slate-500">Bill:</span>
